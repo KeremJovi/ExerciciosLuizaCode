@@ -59,47 +59,52 @@
   
     //Método que adiciona os nós
     push(value) {
-      const node = new Node(value);
-      if (this.isEmpty()) {
+      const node = new Node(value); // cria um novo nó que recebe um valor 
+
+      if (this.isEmpty()) {//Verifica se a lista está vazia, se sim atribui o nó a esses atributos 
         this.head = node;
         this.tail = node;
-      } else {
+      } else { // Se não estiver vazio ele adiciona a referencia no next da calda e na propria calda 
         this.tail.next = node;
         this.tail = node;
       }
   
-      this.length++;
+      this.length++; // Adiciona mais uma posição 
     }
   
+    //Ele retorna o nó de acordo com o indice informado. 
     get(index) {
-      if (index < 0 || index > this.length || this.isEmpty()) {
-        return null;
+      // Verifica se o valor de index menor que 0 ou que o valor de index é maior que a quantidade de nós no LinkedList ou se a nossa lista está vazia
+      if (index < 0 || index > this.length || this.isEmpty()) { 
+        return null; // se sim retorna vazio 
       }
   
-      if (index === 0) {
-        return this.head;
+      if (index === 0) { // Verifica se nosso index está vazio 
+        return this.head; // se sim retorna a cabeça do nó 
       }
   
-      if (index === this.length - 1) {
-        return this.tail;
+      if (index === this.length - 1) { // verifica se nosso index possui valor igual ao ultimo nó da lista 
+        return this.tail; // se sim retorna a calda do nó 
       }
   
-      let currentNode = this.head;
-      let interator = 0;
-      while (interator < index) {
-        interator++;
-        currentNode = currentNode.next;
+      let currentNode = this.head;// Atribui o valor da cabeça do nó da variavel correntNode
+      let interator = 0; // INicia o contador com valor zero 
+
+      // Cria uma condicional para verificar se o valor do contator é menor que o valor do index e faz essa verificação até ela não ser mais verdade 
+      while (interator < index) { 
+        interator++;// enquanto o intereador for menor ele vai adicionar mais 1 ao interator 
+        currentNode = currentNode.next;// e atribui o valor da proxima cabeça ao correntNode 
       }
   
-      return currentNode;
+      return currentNode; // retorna o Nó que foi solicitado pelo valor do index
     }
   }
   
-  const list = new LinkedList();
+  const list = new LinkedList(); // Cria um novo objeto 
   
-  list.push(5);
-  list.push(8);
-  list.push(10);
-  list.pop(1);
-  list.get(1);
+  list.push(5); // adiciona valor ao método push 
+  list.push(8);// adiciona valor ao método push 
+  list.push(10);// adiciona valor ao método push 
+  list.pop(1);// Faz a exclusão de um nó de acordo com o valor informado 
+  list.get(1);// Retorna um nó de acordo com o Indice informado
   
